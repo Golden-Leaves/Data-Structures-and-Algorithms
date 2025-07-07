@@ -32,7 +32,7 @@ class Hashtable:
         keys = []
         for i in range(len(self.hashmap)):
             for j in range(len(self.hashmap[i])): #Linked lists Imao
-                key = self.hashmap[i][j][0]
+                key = self.hashmap[i][j][0] #Finds the corrct bucket, the right list, and the key
                 keys.append(key)
         return keys
         
