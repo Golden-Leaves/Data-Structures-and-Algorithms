@@ -1,0 +1,1 @@
+Since this is a DSA course, I'll refrain from using built-in python functions as much as possible(unless the instructor uses something equivalent ofc)
