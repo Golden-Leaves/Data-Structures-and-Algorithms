@@ -5,41 +5,25 @@ class Node:
 
 class Stack:
     def __init__(self):
-        self.top = None
-        self.bottom = None
-        self.length = 0
+        self.array = []
+
 
     def __str__(self):
         return str(self.__dict__)
     
     def peek(self):
         if self.is_empty():
-            return None
-        print(self.top.value)
+            print(None)
+        print(self.array[-1])
 
     def push(self, value):
-        new_node = Node(value)
-        
-        if self.length == 0:
-            self.bottom = new_node
-            self.top = self.bottom
-            self.length += 1
-        else:
-            new_node.next = self.top
-            self.top = new_node
-            self.length += 1
-        return new_node.value
-            
+        self.array.append(value)
+        return value    
 
     def pop(self):
         if self.is_empty():
-            return 
-        
-        current_node = self.top
-        popped_node = current_node
-        self.top = current_node.next
-        self.length -= 1
-        return popped_node
+            return None
+        self.array.pop()
     
     def is_empty(self):
         if self.length == 0:

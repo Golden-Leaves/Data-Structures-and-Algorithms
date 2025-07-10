@@ -13,42 +13,29 @@ class Stack:
         return str(self.__dict__)
     
     def peek(self):
-        if self.is_empty():
-            return None
         print(self.top.value)
 
     def push(self, value):
         new_node = Node(value)
         
-        if self.length == 0:
+        if not self.bottom:
             self.bottom = new_node
             self.top = self.bottom
             self.length += 1
-        else:
-            new_node.next = self.top
-            self.top = new_node
-            self.length += 1
-        return new_node.value
-            
+            return
+        
+        self.top.next = new_node
+        self.top = new_node
+        self.length += 1
 
     def pop(self):
-        if self.is_empty():
-            return 
-        
         current_node = self.top
-        popped_node = current_node
-        self.top = current_node.next
-        self.length -= 1
-        return popped_node
-    
-    def is_empty(self):
-        if self.length == 0:
-            return True
-        return False
+        
+       
     
     def print_stack(self): #Debug
         stack_arr = []
-        current_node = self.top
+        current_node = self.bottom
         for i in range(self.length):
             stack_arr.append(current_node.value)
             if current_node.next:
