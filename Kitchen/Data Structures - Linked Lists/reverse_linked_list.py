@@ -63,24 +63,39 @@ class LinkedList(): #Using this for the sake of simplicity
             current_node = node.next
         print(linked_list_array)
         
-    def reverse(self):
+    def reverse(self): #owo that sleep sure was something
         current_node = self.head
         previous_node = None
         next_node = current_node.next
-        for i in range(self.length):
-            if current_node == self.head:
-                current_node.next = None
-                previous_node = current_node
-                current_node = next_node
-                next_node = current_node.next
-                continue
-            print(current_node.data)
-            current_node.next = previous_node   
-            previous_node = current_node
-            current_node = next_node
-            if not current_node is None:
-                next_node = current_node.next
-            
+        # for i in range(self.length): #Okay my version is ass
+        #     if not self.head.next:
+        #         return self.head
+        #     if current_node == self.head:
+        #         current_node.next = None
+        #         previous_node = current_node
+        #         current_node = next_node
+        #         next_node = current_node.next
+        #         continue
+        #     print(current_node.data)
+        #     current_node.next = previous_node   
+        #     previous_node = current_node
+        #     current_node = next_node
+        #     if not current_node is None:
+        #         next_node = current_node.next
+        
+        first = self.head
+        second = first.next
+
+        while second:
+            temp = second.next     # Save third node
+            second.next = first    # Reverse the pointer
+            first = second         # Advance first
+            second = temp          # Advance second
+
+        self.head.next = None      # Original head becomes tail
+        self.head = first          # Reassign head to the new front
+        return self.print_list()
+
         self.head = self.tail    
         self.tail = current_node    
         
