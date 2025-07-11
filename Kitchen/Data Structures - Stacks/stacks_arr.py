@@ -30,14 +30,14 @@ class Stack:
             return True
         return False
     
-    def print_stack(self): #Debug
-        stack_arr = []
-        current_node = self.top
-        for i in range(self.length):
-            stack_arr.append(current_node.value)
-            if current_node.next:
-                current_node = current_node.next
-        print(stack_arr)
+    # def print_stack(self): #Debug
+    #     stack_arr = []
+    #     current_node = self.top
+    #     for i in range(self.length):
+    #         stack_arr.append(current_node.value)
+    #         if current_node.next:
+    #             current_node = current_node.next
+    #     print(stack_arr)
             
     
 my_stack = Stack()
@@ -46,4 +46,4 @@ my_stack.push("Osu!")
 my_stack.push("AOEII")
 my_stack.peek()
 print(my_stack.pop())
-my_stack.print_stack()
+# my_stack.print_stack()

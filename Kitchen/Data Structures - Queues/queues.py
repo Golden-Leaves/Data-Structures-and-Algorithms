@@ -3,50 +3,56 @@ class Node:
         self.value = value
         self.next = None
 
-class Stack:
+class Queue:
     def __init__(self):
-        self.top = None
-        self.bottom = None
+        self.first = None
+        self.last = None
         self.length = 0
 
-    def __str__(self):
-        return str(self.__dict__)
-    
     def peek(self):
-        print(self.top.value)
+        if self.is_empty():
+            return None
+        return self.first.value
 
-    def push(self, value):
+    def enqueue(self, value):
         new_node = Node(value)
-        
-        if not self.bottom:
-            self.bottom = new_node
-            self.top = self.bottom
-            self.length += 1
-            return
-        
-        self.top.next = new_node
-        self.top = new_node
+        if self.is_empty():
+            self.first = new_node
+            self.last = self.first
+        else:
+            self.last.next = new_node
+            self.last = self.last.next
+            
         self.length += 1
-
-    def pop(self):
-        current_node = self.top
-        
-       
+        return new_node.value
     
-    def print_stack(self): #Debug
-        stack_arr = []
-        current_node = self.bottom
+    def dequeue(self):
+        if self.is_empty():
+            self.last = None
+            dequeued_node = None
+        else:
+            dequeued_node = self.first
+            self.first = self.first.next
+            
+        self.length -= 1
+        return dequeued_node.value
+
+    def is_empty(self):
+        if self.length == 0:
+            return True
+        return False
+    
+    def print_queue(self):
+        queue_arr = []
+        current_node = self.first
         for i in range(self.length):
-            stack_arr.append(current_node.value)
+            queue_arr.append(current_node.value)
             if current_node.next:
                 current_node = current_node.next
-        print(stack_arr)
-            
-    
-my_stack = Stack()
-my_stack.push("Google")
-my_stack.push("Osu!")
-my_stack.push("AOEII")
-my_stack.peek()
-print(my_stack.pop())
-my_stack.print_stack()
+        print(queue_arr)
+my_queue = Queue()
+my_queue.enqueue("Osu!")
+my_queue.enqueue("VSCode")
+my_queue.enqueue("ChatGPT")
+my_queue.dequeue()
+my_queue.print_queue()
