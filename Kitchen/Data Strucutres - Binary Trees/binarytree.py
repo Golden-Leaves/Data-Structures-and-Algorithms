@@ -43,9 +43,9 @@ class BinarySearchTree:
                 return current
          
         return None
-
+    #This only works for blaanced BSTs(im too lazy to implement the other cases)
     def remove(self, value): #Go right then left til leaf?
-        if self.root is None:#Wtf did i write
+        if self.root is None:#Wtf did i cook
             return
         current_node = self.root
         parent_node = None
