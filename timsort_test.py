@@ -1,7 +1,7 @@
 import string
 from runtime_utils import track_time
 import random
-CONSTANT = 10**6
+CONSTANT = 10**8
 letter_arr =  random.choices(string.printable, k=CONSTANT)
 number_arr = list(range(CONSTANT))
 random.shuffle(number_arr)
