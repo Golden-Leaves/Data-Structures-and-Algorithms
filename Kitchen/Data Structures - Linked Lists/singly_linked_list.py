@@ -56,6 +56,7 @@ class LinkedList():
         current_node.next = next_node #Dereferences the node you wanna delete
         self.length -= 1
         return
+    
     def print_list(self):
         linked_list_array = []
         current_node = self.head
