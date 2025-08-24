@@ -1,7 +1,7 @@
 class Node:
     def __init__(self, value):
-        self.left = None
-        self.right = None
+        self.left: Node | None = None
+        self.right: Node |None = None
         self.value = value
 
 class BinarySearchTree:
@@ -126,12 +126,18 @@ class BinarySearchTree:
                 queue.append(current_node.right)
         return result
 
-def traverse(node):
-    tree = {"value": node.value}
-    tree["left"] = None if node.left is None else traverse(node.left)
-    tree["right"] = None if node.right is None else traverse(node.right)
-    return tree
-
+# def traverse(node):
+#     tree = {"value": node.value}
+#     tree["left"] = None if node.left is None else traverse(node.left)
+#     tree["right"] = None if node.right is None else traverse(node.right)
+#     return tree
+def traverse_inorder(node: Node,result:list):
+    if node is None:
+        return result
+    traverse_inorder(node.left,result) # type: ignore
+    result.append(node.value)
+    traverse_inorder(node.right,result) # type: ignore
+    return result
 tree = BinarySearchTree()
 tree.insert(9)
 tree.insert(4)
@@ -142,6 +148,7 @@ tree.insert(15)
 tree.insert(1)
 tree.remove(170)
 print(tree.breadth_first_search())
+print(traverse_inorder(tree.root,[])) # type: ignore
 # import json
 # print(json.dumps(traverse(tree.root)))
 # print(tree.lookup(20))
