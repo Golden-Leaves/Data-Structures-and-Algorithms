@@ -131,13 +131,7 @@ class BinarySearchTree:
 #     tree["left"] = None if node.left is None else traverse(node.left)
 #     tree["right"] = None if node.right is None else traverse(node.right)
 #     return tree
-def traverse_inorder(node: Node,result:list):
-    if node is None:
-        return result
-    traverse_inorder(node.left,result) # type: ignore
-    result.append(node.value)
-    traverse_inorder(node.right,result) # type: ignore
-    return result
+
 tree = BinarySearchTree()
 tree.insert(9)
 tree.insert(4)
